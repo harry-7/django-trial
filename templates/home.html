@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>
+		Home
+	</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/flash.js"></script>
+</head>
+<body>
+	{% if success_message %}
+	<header>
+		<div class="flash-message alert alert-success">
+			{{success_message}}
+			{% endif %}
+		</div>
+	</header>
+
+	<h2 class="heads"> Welcome </h2>
+	<div class="form-group container">
+		<form class="form" role = "form" method="POST" action="">{% csrf_token %}
+			<h3> Sign Up </h3>
+			{% for field in form %}
+			<fieldset class="form-group">
+				<label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
+				<div >
+					<input type="text" class="form-control"
+					name="{{ field.name }}"
+					id="id_{{ field.name }}"
+					> 
+				</div>
+				{% for error in field.errors %}
+				<div class="alert alert-danger">
+					<strong>{{ error|escape }}</strong>
+				</div>
+				{% endfor %}
+			</fieldset>
+			{% endfor %}
+			<input type="submit" class="btn btn-primary btn-jumbotron btn-block" value="Register">
+		</form>
+		{% for error in form.non_field_errors %}
+	<div class="alert alert-warning">
+		<strong>{{ error|escape }}</strong>
+	</div>
+	{% endfor %}
+	</div>
+	
+</body>
+</html>
