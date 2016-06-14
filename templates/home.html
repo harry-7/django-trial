@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/flash.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -15,11 +16,23 @@
     </div>
       <ul class="nav navbar-nav navbar-right">
       <li><a href="/register"><button class="btn btn-inline btn-success">SignUp</button></a></li>
-      <li><a href="/login"><button class="btn btn-inline btn-success">Login</button></a></li>
+      {% if not user.is_authenticated %}<li><a href="/login"><button class="btn btn-inline btn-success">Login</button></a></li>
+          {% else %} <li><a href="/logout"><button class="btn btn-inline btn-success">Logout</button></a></li>
+          {% endif %}
     </ul>
   </div>
 </nav>
     <h2 class="heads"> Home Page </h2>
+{% if success_message %}
+    <div class="flash-message alert alert-success">
+    {{ success_message }}
+{% endif %}
+</div>
+{% if failure_message %}
+    <div class="flash-message alert alert-danger">
+    {{ failure_message }}
+{% endif %}
+</div>
 
 </body>
 </html>

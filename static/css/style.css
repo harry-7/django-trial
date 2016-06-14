@@ -30,15 +30,13 @@ body{
 }
 
 .flash-message{
-	margin-top: -8%;
+	margin-top: -5%;
 	float:right;
 	text-align: center;
 	width:25%;
 	opacity: 1;
+    font-size:16;
 }
 .flash-message.fadein {
 	opacity: 0;
-}
-.btn{
-	padding:40px;
 }

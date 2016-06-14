@@ -10,17 +10,20 @@
 </head>
 <body>
 {% if success_message %}
-    <header>
     <div class="flash-message alert alert-success">
     {{ success_message }}
 {% endif %}
 </div>
-</header>
+{% if failure_message %}
+    <div class="flash-message alert alert-danger">
+    {{ failure_message }}
+{% endif %}
+</div>
 
 <h2 class="heads"> Welcome </h2>
 <div class="form-group container">
     <form class="form" role="form" method="POST" action="">{% csrf_token %}
-        <h3> Sign Up </h3>
+        <h3> {{ formname }} </h3>
         {% for field in form %}
             <fieldset class="form-group">
                 <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
@@ -44,7 +47,7 @@
                 {% endfor %}
             </fieldset>
         {% endfor %}
-        <input type="submit" class="btn btn-primary btn-jumbotron btn-block" value="Register">
+        <input type="submit" class="btn btn-primary btn-jumbotron btn-block" value={{ formname }}>
     </form>
     {% for error in form.non_field_errors %}
         <div class="alert alert-warning">

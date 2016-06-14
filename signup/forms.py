@@ -19,3 +19,8 @@ class SignupForm(forms.ModelForm):
         if User.objects.filter(username = form_username).exists():
             raise forms.ValidationError(u'username already exists choose another one.')
         return form_username
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField()
+

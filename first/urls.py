@@ -20,5 +20,7 @@ from signup import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^register/',views.signup,name="signup"),
-    url(r'^$',views.home,name="home")
+    url(r'^$',views.home,name="home"),
+    url(r'^login/',views.form_login,name="login"),
+    url(r'^logout/',views.form_logout,name="logout")
 ]
