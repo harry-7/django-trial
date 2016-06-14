@@ -39,3 +39,6 @@ body{
 .flash-message.fadein {
 	opacity: 0;
 }
+.btn{
+	padding:40px;
+}
