@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^register/',views.signup,name="signup"),
     url(r'^$',views.home,name="home"),
     url(r'^login/',views.form_login,name="login"),
-    url(r'^logout/',views.form_logout,name="logout")
+    url(r'^accounts/login/',views.form_login,name="login"),
+    url(r'^logout/',views.form_logout,name="logout"),
+    url(r'^command/',views.command,name="command"),
 ]

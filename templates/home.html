@@ -10,19 +10,27 @@
 </head>
 <body>
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">My First App</a>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">My First App</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            {% if not user.is_authenticated %}
+                <li><a href="/register">
+                    <button class="btn btn-inline btn-success">SignUp</button>
+                </a></li>
+                <li><a href="/login">
+                    <button class="btn btn-inline btn-success">Login</button>
+                </a></li>
+            {% else %}
+                <li><a href="/logout">
+                    <button class="btn btn-inline btn-success">Logout</button>
+                </a></li>
+            {% endif %}
+        </ul>
     </div>
-      <ul class="nav navbar-nav navbar-right">
-      <li><a href="/register"><button class="btn btn-inline btn-success">SignUp</button></a></li>
-      {% if not user.is_authenticated %}<li><a href="/login"><button class="btn btn-inline btn-success">Login</button></a></li>
-          {% else %} <li><a href="/logout"><button class="btn btn-inline btn-success">Logout</button></a></li>
-          {% endif %}
-    </ul>
-  </div>
 </nav>
-    <h2 class="heads"> Home Page </h2>
+<h2 class="heads"> Home Page </h2>
 {% if success_message %}
     <div class="flash-message alert alert-success">
     {{ success_message }}

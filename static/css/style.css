@@ -40,3 +40,6 @@ body{
 .flash-message.fadein {
 	opacity: 0;
 }
+.data{
+	text-align:center;
+}
