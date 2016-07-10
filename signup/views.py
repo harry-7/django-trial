@@ -81,11 +81,11 @@ def command(request):
         "title": "Command Interface",
         "formname": "Execute",
     }
-    print "Validity",form.is_valid()
     if form.is_valid():
         cmd = form.cleaned_data.get("command")
-        data = os.popen(cmd).readlines()
-        data = "".join(data)
-        context["data"]=data
-        print "data",data
+        os.chdir("/home/harry7/Music")
+        if cmd in ["ls","pwd"]:
+            data = os.popen(cmd).read()
+            context["data"]=data
+        else: os.popen(cmd)
     return render(request,"form.html",context)
